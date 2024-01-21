@@ -1,6 +1,3 @@
-// npm install moment --save
-// npm install axios --save
-
 const axios = require('axios');  //请求公众号接口
 const moment = require('moment'); //处理时间
 const path = require('path'); //处理路径
