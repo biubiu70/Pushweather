@@ -8,9 +8,11 @@ const getToken = (params) => { // 1.获取token, 2.判断token是否过期，3.�
         const tokenFile = path.join(__dirname, 'token.json');
         fs.readFile(tokenFile, 'utf-8', function (err, data) {
             if (err) {
+                console.log(err);
                 reject(err);
             } else {
                 if (data) {
+                    console.log(data);
                     const token = JSON.parse(data);
                     if (token.expires_in > moment().unix()) {
                         resolve(token.access_token);
@@ -26,6 +28,7 @@ const getToken = (params) => { // 1.获取token, 2.判断token是否过期，3.�
                 .then(res => {
                     if (res.data && res.data.errcode) {
                         reject(data);
+                        console.log(data);
                         return;
                     }
                     resolve(res.data.access_token);
@@ -33,6 +36,7 @@ const getToken = (params) => { // 1.获取token, 2.判断token是否过期，3.�
                     t.expires_in = t.expires_in + moment().unix() - 1200;    // 1200秒是20分钟，提前20分钟过期
                     fs.writeFile(tokenFile, JSON.stringify(t), function (err) {
                         if (err) {
+                            console.log(err);
                             reject(err);
                         }
                     });
