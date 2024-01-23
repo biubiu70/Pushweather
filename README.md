@@ -26,7 +26,10 @@ module.exports = {
 }
 ```
 
-> 参考视频指路： [良心之作](https://www.bilibili.com/video/BV19P4y1Z7ix/)
-> 天行数据-[骚话API](https://www.tianapi.com/list/)
-> 和风天气-[天气](https://dev.qweather.com/docs/api/weather/weather-now/)
-> 微信公众号-[测试地址账号](https://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=sandbox/login)
+> 1. 参考视频指路： [良心之作](https://www.bilibili.com/video/BV19P4y1Z7ix/)
+> 
+> 2. 天行数据-[骚话API](https://www.tianapi.com/list/)
+> 
+> 3. 和风天气-[天气](https://dev.qweather.com/docs/api/weather/weather-now/)
+> 
+> 4. 微信公众号-[测试地址账号](https://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=sandbox/login)
