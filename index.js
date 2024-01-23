@@ -3,7 +3,7 @@ const { getToken } = require('./src/getToken/index');
 const { sendMessage } = require('./src/sendMessage/index');
 const { getDate, getWeather, getLoveWords } = require('./src/utils/index');
 
-let loveDate = 999;
+let loveDate = 1;
 
 const start = async () => {
     let access_token = await getToken(params);
@@ -14,27 +14,21 @@ const start = async () => {
     const data = {
         nowDate: {
             value: getDate(),
-            color: '#173177'
         },
         city: {
-            value: '大同',
-            color: '#173177'
+            value: '合肥',
         },
         low: {
             value: low,
-            color: '#173177'
         },
         high: {
             value: high,
-            color: '#173177'
         },
         loveDate: {
-            value: loveDate,
-            color: '#173177'
+            value: `${loveDate}`,
         },
         txt: {
             value: loveWord,
-            color: '#173177'
         }
 
     }
@@ -65,5 +59,31 @@ const start = async () => {
 //     start();
 // }, 1000 * 2);
 
+//start();
 
-start();
+function scheduleDailyTask(hour, minute, task) {
+    const now = new Date();
+    const targetTime = new Date(
+        now.getFullYear(),
+        now.getMonth(),
+        now.getDate(),
+        hour,
+        minute,
+        0
+    );
+
+    let delay = targetTime.getTime() - now.getTime();
+    if (delay < 0) {
+        // 如果目标时间已经过去，就计算到第二天的时间
+        delay += 24 * 60 * 60 * 1000;
+    }
+
+    setTimeout(() => {
+        task();
+        // 设置下一次任务的执行时间，确保每天在指定的时分执行一次给定的任务
+        scheduleDailyTask(hour, minute, task);
+    }, delay);
+}
+
+// 设置每天 20:41 执行 start() 函数
+scheduleDailyTask(21, 22, start);

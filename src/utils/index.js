@@ -38,7 +38,7 @@ const getDate = () => {
     const week = new Date().getDay();
 
     //    console.log(year, month, day, week);
-    return `今天是${year}年${month}月${day}日 ${formaWeek(week)}`;
+    return `是${year}年${month}月${day}日 ${formaWeek(week)}`;
 }
 
 //console.log(getDate());
@@ -46,7 +46,7 @@ const getDate = () => {
 //2. 获取天气
 const getWeather = () => {
     return new Promise((resolve, reject) => {
-    axios.get('https://devapi.qweather.com/v7/weather/now?location=101100201&key=68e3928a1a0041bd97bc312374d990ae')
+    axios.get('https://devapi.qweather.com/v7/weather/now?location=101220101&key=68e3928a1a0041bd97bc312374d990ae')
         .then(res => {
             const { data } = res;
             resolve({
